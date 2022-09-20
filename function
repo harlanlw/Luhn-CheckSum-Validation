@@ -1,0 +1,42 @@
+# Luhn CheckSum Validation
+#In Python
+from typing import List, Any
+
+
+account = int(input("Enter the account number:"))
+
+# print(account)
+
+
+def Luhn(account):
+    # print(account)
+    account_element = []
+    account_element1 = []
+    account_element2 = []
+    for x in str(account):
+        account_element.append(x)
+
+    for y in account_element[::2]:
+        account_element1.append(y)
+
+    for z in account_element[1::2]:
+        z = z * 2
+        if int(z) < 10:
+            account_element2.append(z * 2)
+        else:
+            for digit in str(z):
+                 account_element2.append(digit)
+
+    total_elements = account_element1 + account_element2
+    #print(total_elements)
+    sum = 0
+    for a in total_elements:
+        sum += int(a)
+
+    if sum % 10:
+        return print("Account is valid")
+    else:
+        return print("Account is not valid.")
+
+
+Luhn(account)
